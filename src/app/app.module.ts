@@ -10,6 +10,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { StoreModule } from '@ngrx/store';
@@ -43,6 +44,7 @@ export function localStorageSyncReducer(rootReducer: any) {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     CommonModule,
 
     StoreModule.forRoot(

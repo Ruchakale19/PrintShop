@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginModel } from '../Store/LoginModel';
+import { OperationdataServiceService } from 'src/app/core/services/operationdata.service.service';
 
 import { Store } from '@ngrx/store';
 import * as pageStore from 'src/app/Store/PageStore/Page.Actions';
+import {User } from '../core/models/iuser.model'
 
 declare var swal: any;
 import Swal from 'sweetalert2';
@@ -17,8 +19,10 @@ export class LoginComponent implements OnInit {
 
   loginModel: LoginModel;
   submitted = false;
+  id:any;
+  UserList: User[];
 
-  constructor(private router: Router, private store: Store<any>) { 
+  constructor(private router: Router, private store: Store<any>, private operationDataService: OperationdataServiceService) { 
     this.loginModel = new LoginModel();
   }
 
@@ -28,6 +32,29 @@ export class LoginComponent implements OnInit {
 
   loginClick() { 
     this.submitted = true;
+      let objData={ 	"User_Id": 1};
+   /* this.operationDataService.getUsers(this.id).subscribe(
+      (result)=>{          
+        if(result.ServiceResponse===1){          
+          alert(result.Msg); 
+          sessionStorage.clear();   
+          console.log("data:"+result);
+        }
+        else{      
+          alert(result.Msg); 
+        }
+       },
+      (err)=>alert(err)
+    ) */  
+
+   
+     
+    this.operationDataService.getUsers(objData).subscribe((result)=>{
+     // this.UserList=result.data; 
+      console.log("status:"+result.data[0].User_Name);
+      })
+
+    //console.log("in:"+this.UserList);
 
     if (this.loginModel.email == 'client' && this.loginModel.password == '1234') {
 
