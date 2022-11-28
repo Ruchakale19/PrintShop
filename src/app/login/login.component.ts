@@ -9,6 +9,7 @@ import {User } from '../core/models/iuser.model'
 
 declare var swal: any;
 import Swal from 'sweetalert2';
+import { size } from '../core/models/isize.model';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
 
   loginModel: LoginModel;
+  sizeList: size[];
   submitted = false;
   id:any;
   UserList: User[];
@@ -53,6 +55,17 @@ export class LoginComponent implements OnInit {
      // this.UserList=result.data; 
       console.log("status:"+result.data[0].User_Name);
       })
+
+
+      this.operationDataService.getSize().subscribe(
+        (result) => {
+         this.sizeList = result.data;
+         console.log(result);
+         console.log("Size:"+result.data[0].Size_Name);
+  
+        },
+        (err) => console.log(err)
+      );
 
     //console.log("in:"+this.UserList);
 

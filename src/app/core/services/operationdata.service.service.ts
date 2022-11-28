@@ -3,14 +3,18 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { AsyncSubject, BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IUserResponce } from '../models/iuser.model';
-
+import { environment } from 'src/environments/environment';
+import { Isize } from '../models/isize.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OperationdataServiceService {
 
-  URL="http://localhost:8090/api/login/getloginById";
+  API_URL = environment.baseUrl;
+  baseURL=this.API_URL;
+
+  
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -27,11 +31,16 @@ export class OperationdataServiceService {
  
   getUsers(userid: any): Observable<IUserResponce> {
     console.log(userid)
-    return this._httpClient.post<IUserResponce>(this.URL ,JSON.stringify(userid),{
+    return this._httpClient.post<IUserResponce>(this.baseURL+"/login/getloginById",JSON.stringify(userid),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
   })
+      .pipe(catchError(this.handleError));
+  }
+
+  getSize(): Observable<Isize> {
+    return this._httpClient.get<Isize>(this.baseURL + "/sizemaster/getsize")
       .pipe(catchError(this.handleError));
   }
 }
