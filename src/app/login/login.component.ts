@@ -1,3 +1,6 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
+/* eslint-disable @ngrx/no-typed-global-store */
+/* eslint-disable @ngrx/prefer-action-creator-in-dispatch */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginModel } from '../Store/LoginModel';
@@ -5,36 +8,40 @@ import { OperationdataServiceService } from 'src/app/core/services/operationdata
 
 import { Store } from '@ngrx/store';
 import * as pageStore from 'src/app/Store/PageStore/Page.Actions';
-import {User } from '../core/models/iuser.model'
+import { User } from '../core/models/iuser.model';
 
 declare var swal: any;
 import Swal from 'sweetalert2';
+import { DbcallingService } from '../core/services/dbcalling.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   loginModel: LoginModel;
   submitted = false;
-  id:any;
-  UserList: User[];
+  id: any;
+  UserList: any = [];
 
-  constructor(private router: Router, private store: Store<any>, private operationDataService: OperationdataServiceService) { 
+  constructor(
+    private router: Router,
+    private store: Store<any>,
+    private operationDataService: OperationdataServiceService,
+    private dbCallingService: DbcallingService
+  ) {
     this.loginModel = new LoginModel();
   }
 
-  ngOnInit(): void {
-    debugger;
-  }
+  ngOnInit(): void {}
 
-  loginClick() { 
+  loginClick() {
+    debugger;
     this.submitted = true;
-      let objData={ 	"User_Id": 1};
-   /* this.operationDataService.getUsers(this.id).subscribe(
-      (result)=>{          
+    let objData = { User_Id: 1 };
+
+    /* this.operationDataService.getUsers(this.id).subscribe((result)=>{          
         if(result.ServiceResponse===1){          
           alert(result.Msg); 
           sessionStorage.clear();   
@@ -45,53 +52,41 @@ export class LoginComponent implements OnInit {
         }
        },
       (err)=>alert(err)
-    ) */  
+    ) */
 
-   
-     
-    this.operationDataService.getUsers(objData).subscribe((result)=>{
-     // this.UserList=result.data; 
-      console.log("status:"+result.data[0].User_Name);
-      })
-
-    //console.log("in:"+this.UserList);
-
-    if (this.loginModel.email == 'client' && this.loginModel.password == '1234') {
-
-      this.loginModel.id = 1;
-      this.loginModel.email = "sample@sample.com";
-      this.loginModel.name = "John Willson";
-      this.loginModel.password = "1234";
-      this.loginModel.mobileNumber = 9876543210;
-      this.loginModel.userType = 2;
-
+    // this.operationDataService.getUsers(objData).subscribe((result) => {
+      this.dbCallingService.getUsers(objData).subscribe((result) => {
       debugger;
-
-      this.store.dispatch(new pageStore.OpenPage(Object.assign({ }, this.loginModel)));
+      this.UserList = result.data;
       debugger;
-      if(this.loginModel.id > 0) {
-        // this.router.navigateByUrl('addclientprofile');
-      }
-    }
+      console.log('status:' + result.data[0].User_Name);
+    });
 
-    else {
-      Swal.fire({
-        text: 'Invalid Credentials!',
-        icon: 'error'
-      })
-    }
   }
 
-  forgotPasswordClick() { 
+  forgotPasswordClick() {
     this.router.navigateByUrl('/forgotpassword');
   }
 
-  home() { 
+  home() {
     this.router.navigateByUrl('');
   }
 
-  regClick() { 
+  regClick() {
     this.router.navigateByUrl('/register');
   }
 
+  // loginClick() {
+  //   if(this.loginModel.email != '' && this.loginModel.password != '') {
+  //     this.dbCallingService.login(1).subscribe((res) => {
+  //       this.UserList = res;
+  //     })
+  //   }
+  //   else {
+  //     Swal.fire({
+  //       text: 'Usename & Password id reuired !',
+  //       icon: 'warning'
+  //     })
+  //   }
+  // }
 }

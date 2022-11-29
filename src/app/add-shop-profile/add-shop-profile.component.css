@@ -1,0 +1,8 @@
+.headerimage {
+    width: 2000px;
+    height: 200px;
+  }
+
+  table, th, td {
+    border:1px solid black;
+  }

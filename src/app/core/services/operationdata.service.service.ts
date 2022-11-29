@@ -10,7 +10,7 @@ import { IUserResponce } from '../models/iuser.model';
 })
 export class OperationdataServiceService {
 
-  URL="http://localhost:8090/api/login/getloginById";
+  URL="http://localhost:8090/api/logins";
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -27,6 +27,7 @@ export class OperationdataServiceService {
  
   getUsers(userid: any): Observable<IUserResponce> {
     console.log(userid)
+    debugger;
     return this._httpClient.post<IUserResponce>(this.URL ,JSON.stringify(userid),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
