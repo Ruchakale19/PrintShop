@@ -18,7 +18,7 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
     debugger;
-    const storage = localStorage.getItem('google_auth');
+    const storage = localStorage.getItem('user_auth');
 
     if (storage) {
       this.userDetails = JSON.parse(storage);
@@ -54,13 +54,12 @@ export class SideNavComponent implements OnInit {
   openChat() { }
 
   editProfileClick(temp: LoginModel) { }
+
   logoutClick() { 
     debugger;
-    localStorage.removeItem('google_auth');
+    localStorage.removeItem('user_auth');
     this.router.navigateByUrl('/login').then();
   }
-  openPaymentGateway() { }
-  alerts() { }
-  close() { }
+  
 
 }

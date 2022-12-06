@@ -21,7 +21,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 export function localStorageSyncReducer(rootReducer: any) {
   return localStorageSync({
@@ -85,7 +85,16 @@ export function localStorageSyncReducer(rootReducer: any) {
               '969708128713-locoheomn096rnfdh9ietl2arme2icob.apps.googleusercontent.com',
               googleLoginOptions
             )
+          },
+
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '853222125876785',
+            )
           }
+
+
         ]
       } as SocialAuthServiceConfig
     }

@@ -5,7 +5,7 @@ import { LoginModel } from '../Store/LoginModel';
 
 import {User } from '../core/models/iuser.model'
 import { size } from '../core/models/isize.model';
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 
 
 @Component({
@@ -51,18 +51,40 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/register');
   }
 
-  loginWithGmail() { 
+  // loginWithGmail() { 
+  //   debugger;
+  //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
+  //     debugger;
+  //     localStorage.setItem('google_auth', JSON.stringify(data));
+  //     debugger;
+  //     this.router.navigateByUrl('/home');
+  //     debugger;
+  //   });
+  // }
+
+  // loginWithFacebook() { 
+   
+  // }
+
+  loginWithGmail(): void {
     debugger;
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
       debugger;
-      localStorage.setItem('google_auth', JSON.stringify(data));
+      localStorage.setItem('user_auth', JSON.stringify(data));
       debugger;
       this.router.navigateByUrl('/home');
       debugger;
     });
   }
 
-  loginWithFacebook() { 
-   
+  loginWithFacebook() {
+    debugger;
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((data) => {
+      debugger;
+      localStorage.setItem('user_auth', JSON.stringify(data));
+      debugger;
+      this.router.navigateByUrl('/home');
+      debugger;
+    });
   }
 }

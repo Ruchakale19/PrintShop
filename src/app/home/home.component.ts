@@ -9,16 +9,28 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   userDetails:any = [];
+  googleLogin = false;
+  facebookLogin = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {  
     debugger;
-    const storage = localStorage.getItem('google_auth');
+    const storage = localStorage.getItem('user_auth');
 
     if (storage) {
       this.userDetails = JSON.parse(storage);
-    } else {
+
+      if(this.userDetails.provider == "FACEBOOK") {
+        this.facebookLogin = true;
+      }
+      else{
+        this.googleLogin = true;
+      }
+
+
+    } 
+    else {
       // this.signOut();
       this.router.navigateByUrl('/');
     }
@@ -30,7 +42,7 @@ export class HomeComponent implements OnInit {
 
   signOut(): void {
     debugger;
-    localStorage.removeItem('google_auth');
+    localStorage.removeItem('user_auth');
     this.router.navigateByUrl('/login').then();
   }
 
