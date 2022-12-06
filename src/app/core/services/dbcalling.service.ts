@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbcallingService {
 
-  URL="http://localhost:8090/api/";
+  API_URL = environment.baseUrl;
+  baseURL=this.API_URL;
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -16,7 +18,7 @@ export class DbcallingService {
     
     try {
       
-      return this._httpClient.get<any>(this.URL + 'papermaster/getpaper', {
+      return this._httpClient.get<any>(this.baseURL + 'papermaster/getpaper', {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
           }),
@@ -42,7 +44,7 @@ export class DbcallingService {
     
     try {
       
-      return this._httpClient.get<any>(this.URL + 'orientationmaster/getorientation', {
+      return this._httpClient.get<any>(this.baseURL + 'orientationmaster/getorientation', {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
           }),
@@ -70,7 +72,7 @@ export class DbcallingService {
       debugger;
       let userid = new HttpParams().set('userid',userId);
       debugger;
-      return this._httpClient.get<any>((this.URL + 'login') , {
+      return this._httpClient.get<any>((this.baseURL + 'login') , {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
         }),
@@ -86,7 +88,7 @@ export class DbcallingService {
     console.log(userid)
     debugger;
     // var userId = JSON.stringify(userid)
-    return this._httpClient.get<any>(this.URL ,{
+    return this._httpClient.get<any>(this.baseURL ,{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),

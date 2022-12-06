@@ -30,7 +30,8 @@ export class OperationdataServiceService {
 
  
   getUsers(userid: any): Observable<IUserResponce> {
-    console.log(userid)
+    console.log(userid);
+    debugger;
     return this._httpClient.post<IUserResponce>(this.baseURL+"/login/getloginById",JSON.stringify(userid),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

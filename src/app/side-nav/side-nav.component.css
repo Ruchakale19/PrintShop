@@ -7,7 +7,7 @@
     position: absolute;
     /* right: 0; */
     background-color: transparent;
-    min-width: auto;
+    width: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 9999;
     margin-left: 3px;
@@ -19,6 +19,7 @@
     display: block;
     cursor: pointer;
     font-size: 15px;
+    width: auto;
   }
   .badges {
     background: transparent;

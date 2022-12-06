@@ -3,10 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  
   production: false,
 
   baseUrl: 'http://localhost:8090/api'
+
+ //  Client_ID_FB = 1118445942135621,
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

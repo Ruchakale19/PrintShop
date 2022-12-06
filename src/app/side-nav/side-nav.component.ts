@@ -10,12 +10,21 @@ import { LoginModel } from '../Store/LoginModel';
 export class SideNavComponent implements OnInit {
 
   loginModel: LoginModel;
+  userDetails:any = [];
 
   constructor(private router: Router) { 
     this.loginModel = new LoginModel();
   }
 
   ngOnInit(): void {
+    debugger;
+    const storage = localStorage.getItem('google_auth');
+
+    if (storage) {
+      this.userDetails = JSON.parse(storage);
+    } else {
+      this.userDetails = [];
+    }
   }
 
   home() {
@@ -45,7 +54,11 @@ export class SideNavComponent implements OnInit {
   openChat() { }
 
   editProfileClick(temp: LoginModel) { }
-  logoutClick() { }
+  logoutClick() { 
+    debugger;
+    localStorage.removeItem('google_auth');
+    this.router.navigateByUrl('/login').then();
+  }
   openPaymentGateway() { }
   alerts() { }
   close() { }

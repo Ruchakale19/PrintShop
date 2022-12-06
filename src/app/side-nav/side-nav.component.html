@@ -26,7 +26,7 @@
                           <li><a style="font-size: 22px;" (click)="servicesClick()">Services</a></li>
                           <li><a style="font-size: 22px;" (click)="aboutUsClick()">About Us</a></li>
                           <!-- <li><a (click)="profilesClick()">Profiles</a></li> -->
-                       </ul>  <!--  /.menu-list -->
+                        </ul> <!--  /.menu-list -->
                       </div> <!-- /.hours-content-->
 
                     </div><!-- /.menu-wrapper -->
@@ -38,44 +38,45 @@
             </div>
             <div class="col-lg-5 col-sm-4">
               <div class="header-right-area">
-                <div class="contact-page">
+                <div class="contact-page" *ngIf="userDetails.length == 0">
 
 
-                  <a *ngIf="this.loginModel.id == 0" class="btn btn-default btn-primary btn-white" (click)="loginClick()"
-                    style="background-color: #ed1c24 !important;">Login </a>&nbsp;&nbsp;&nbsp;
+                  <a *ngIf="this.loginModel.id == 0" class="btn btn-default btn-primary btn-white"
+                    (click)="loginClick()" style="background-color: #ed1c24 !important;">Login </a>&nbsp;&nbsp;&nbsp;
 
-                    
-                  <a *ngIf="this.loginModel.id == 0" class="btn btn-default btn-primary btn-white" (click)="registerClick()"
-                  >Register</a>
+
+                  <a *ngIf="this.loginModel.id == 0" class="btn btn-default btn-primary btn-white"
+                    (click)="registerClick()">Register</a>
 
 
                 </div>
 
-                <div  *ngIf="this.loginModel.id > 0">
-                    <button type="button" (click)="openPaymentGateway()" title="Select your package here"
-                          style="background-color: transparent;border: none;font-size: 25px;">
-                          <i style="color: #fff;" class="fa fa-dollar-sign"></i>
-                     </button>
+                <!-- <div *ngIf="userDetails.length == 0">
+                  <button type="button" (click)="openPaymentGateway()" title="Select your package here"
+                    style="background-color: transparent;border: none;font-size: 25px;">
+                    <i style="color: #fff;" class="fa fa-dollar-sign"></i>
+                  </button>
 
-                    <button autocomplete="off" type="button" title="See your Notifications here" data-target="#notifications" id="btnnotifications"  data-toggle="modal"
-                            data-role="popup" data-backdrop="static" data-keyboard="false"
-                            style="background-color: transparent;border: none;font-size: 25px;">
-                            <b> <i style="color: #fff;" class="fa fa-bell"></i> </b>
-                    </button>
+                  <button autocomplete="off" type="button" title="See your Notifications here"
+                    data-target="#notifications" id="btnnotifications" data-toggle="modal" data-role="popup"
+                    data-backdrop="static" data-keyboard="false"
+                    style="background-color: transparent;border: none;font-size: 25px;">
+                    <b> <i style="color: #fff;" class="fa fa-bell"></i> </b>
+                  </button>
 
-                    <button type="button" (click)="openChat()" title="See your Messages here"
-                            style="background-color: transparent;border: none;font-size: 25px;margin-right: 12px;">
-                      <i style="color: #fff;" class="fa fa-comment"></i>
-                    </button>
+                  <button type="button" (click)="openChat()" title="See your Messages here"
+                    style="background-color: transparent;border: none;font-size: 25px;margin-right: 12px;">
+                    <i style="color: #fff;" class="fa fa-comment"></i>
+                  </button>
+                </div> -->
 
-                  <div class="dropdown">
-                    <button class="dropbtn nav-btn" style="border-style:groove;">
-                      <i aria-hidden="true" class="fa fa-user" style="font-size: 25px;width: 40px;"></i>
-                      {{loginModel.name}}</button>
-                    <div class="dropdown-content">
-                      <a (click)="editProfileClick(loginModel)"><i class="fa fa-user"></i>   Edit Profile </a>
-                      <a (click)="logoutClick()"><i class="fas fa-sign-out-alt"></i>   logout </a>
-                    </div>
+                <div class="dropdown" *ngIf="userDetails.length != 0">
+                  <button class="dropbtn nav-btn" style="border-style:groove;">
+                    <i aria-hidden="true" class="fa fa-user" style="font-size: 25px;width: auto;"></i>
+                    {{userDetails.name}}</button>
+                  <div class="dropdown-content">
+                    <a (click)="editProfileClick(userDetails)"><i class="fa fa-user"></i> Edit Profile </a>
+                    <a (click)="logoutClick()"><i class="fas fa-sign-out-alt"></i> logout </a>
                   </div>
                 </div>
 
@@ -91,18 +92,14 @@
       </div>
       <!-- /.header-top-area -->
 
-      
+
     </header>
 
-
-  
-
-
-
-    <!-- <div id="sticky-header"></div> -->   <!-- Comment this to hide black header that was coming un-necessarily -->
+    <!-- <div id="sticky-header"></div> -->
+    <!-- Comment this to hide black header that was coming un-necessarily -->
     <router-outlet></router-outlet>
 
-    
+
     <footer class="site-footer footer-style-one">
       <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
          Start Footer Widget Area
@@ -168,7 +165,7 @@
               <div class="footer-bottom-text">
                 <div class="copyright-text">
                   <p>© 2022 - Cloud Print- All Right Reserved</p>
-                      Abel software and consultants Pvt Ltd
+                  Abel software and consultants Pvt Ltd
                 </div>
               </div>
             </div>

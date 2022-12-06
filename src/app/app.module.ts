@@ -20,6 +20,9 @@ import { AddShopProfileComponent } from './add-shop-profile/add-shop-profile.com
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+
 export function localStorageSyncReducer(rootReducer: any) {
   return localStorageSync({
    keys: [{'PrintWebsite': {
@@ -28,6 +31,11 @@ export function localStorageSyncReducer(rootReducer: any) {
    }}], rehydrate: true
  })(rootReducer);
  }
+
+ const googleLoginOptions = {
+  scope: 'profile email',
+  plugin_name:'sample_pwa_login'
+}; 
 
 @NgModule({
   declarations: [
@@ -46,6 +54,10 @@ export function localStorageSyncReducer(rootReducer: any) {
     FormsModule,
     HttpClientModule,
     CommonModule,
+    SocialLoginModule,
+
+
+    BrowserAnimationsModule,
 
     StoreModule.forRoot(
       { PrintWebsite: Pagereducer },
@@ -61,7 +73,23 @@ export function localStorageSyncReducer(rootReducer: any) {
      }),
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '969708128713-locoheomn096rnfdh9ietl2arme2icob.apps.googleusercontent.com',
+              googleLoginOptions
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

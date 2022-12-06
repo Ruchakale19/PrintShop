@@ -13,22 +13,38 @@
           <h4 class="login01">Login</h4>
           <!-- <h4 *ngIf="submitted && ErrorMsg!=''" style="color:red ">{{ErrorMsg}}</h4> -->
           <div class="form-group mb-4">
-            <input [(ngModel)]="loginModel.email" type="text" class="form-control form-control-lg" name="Email" autofocus=""
-              placeholder="Email/Mobile Number">
-              <div *ngIf="submitted && loginModel.email==''" style="color:red ">Required Email/Username</div>
+            <input type="text" class="form-control form-control-lg" name="Email"
+              autofocus="" placeholder="Email/Mobile Number">
+            <div *ngIf="submitted && loginModel.email==''" style="color:red ">Required Email/Username</div>
           </div>
           <div class="form-group mb-4">
-            <input [(ngModel)]="loginModel.password" type="password" class="form-control form-control-lg" name="Password" placeholder="Password/ OTP">
+            <input class="form-control form-control-lg"
+              name="Password" placeholder="Password/ OTP">
             <div *ngIf="submitted && loginModel.password==''" style="color:red ">Required Password</div>
           </div>
           <button class="btn btn-primary btn-lg btn-block btn-uppercase mb-4 waves-effect waves-button waves-light"
-          (click)="loginClick()">Sign In
+            (click)="loginClick()">Sign In 
           </button>
 
-          <b><a style="color: #fff;margin-left: 23%;">Don't have an acount? </a> <a style="cursor:pointer ;" (click)="regClick()"
-              class="text-light"><strong>Sign Up</strong></a></b>
-              <br>
-          <b><a style="color: #fff;margin-left: 23%;">Forgot Password?  </a> <a style="cursor:pointer ;"
+          <div class="row">
+            <div class="col-md-6">
+              <button style="font-size: 15px;" class="btn btn-primary btn-lg btn-block btn-uppercase mb-4 waves-effect waves-button waves-light"
+                (click)="loginWithGmail()">LogIn with Gmail
+              </button>
+            </div>
+            <div class="row col-md-6">
+              <button style="font-size: 15px;" class="btn btn-primary btn-lg btn-block btn-uppercase mb-4 waves-effect waves-button waves-light"
+                (click)="loginWithFacebook()">LogIn with Facebook
+              </button>
+            </div>
+          </div>
+
+
+
+          <b><a style="color: #fff;margin-left: 23%;">Don't have an acount? </a> <a style="cursor:pointer ;"
+              (click)="regClick()" class="text-light"><strong>Sign Up</strong></a></b>
+          <br>
+          <b><a style="color: #fff;margin-left: 23%;">Forgot Password? </a> <a style="cursor:pointer ;"
               (click)="forgotPasswordClick()" class="text-light"><strong>Click here!</strong></a></b>
 
           <a (click)="home()" class="banner-btn pix-btns wow fadeInUp" data-wow-delay="0.7s"
