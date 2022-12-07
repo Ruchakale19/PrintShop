@@ -68,23 +68,30 @@ export class LoginComponent implements OnInit {
 
   loginWithGmail(): void {
     debugger;
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
-      debugger;
-      localStorage.setItem('user_auth', JSON.stringify(data));
-      debugger;
-      this.router.navigateByUrl('/home');
-      debugger;
-    });
+
+    if(GoogleLoginProvider.PROVIDER_ID != null){
+      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
+        debugger;
+        localStorage.setItem('user_auth', JSON.stringify(data));
+        debugger;
+        this.router.navigateByUrl('/home');
+        debugger;
+      });
+    }
   }
 
   loginWithFacebook() {
     debugger;
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((data) => {
-      debugger;
-      localStorage.setItem('user_auth', JSON.stringify(data));
-      debugger;
-      this.router.navigateByUrl('/home');
-      debugger;
-    });
+
+    if(FacebookLoginProvider.PROVIDER_ID != null){
+      this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((data) => {
+        debugger;
+        localStorage.setItem('user_auth', JSON.stringify(data));
+        debugger;
+        this.router.navigateByUrl('/home');
+        debugger;
+      });
+
+    }
   }
 }
