@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1670403480884,
+  "timestamp": 1670403644075,
   "index": "https://Ruchakale19.github.io/PrintShop/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "https://Ruchakale19.github.io/PrintShop/favicon.ico",
         "https://Ruchakale19.github.io/PrintShop/index.html",
-        "https://Ruchakale19.github.io/PrintShop/main.819ed0da07e56f41.js",
+        "https://Ruchakale19.github.io/PrintShop/main.8c3ce38a4596281a.js",
         "https://Ruchakale19.github.io/PrintShop/manifest.webmanifest",
         "https://Ruchakale19.github.io/PrintShop/polyfills.871633f19a55e4bb.js",
         "https://Ruchakale19.github.io/PrintShop/runtime.ae674de593313bbc.js",
@@ -366,8 +366,8 @@
     "https://Ruchakale19.github.io/PrintShop/assets/webfonts/icomoon_6f81deb4.ttf": "0135157ea8787ff2c5ec63f098fdbee63a93f93e",
     "https://Ruchakale19.github.io/PrintShop/assets/webfonts/icomoon_6f81deb4.woff": "068ecf35cec118ebdfa8d066f5e6cb4ffaa656d4",
     "https://Ruchakale19.github.io/PrintShop/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://Ruchakale19.github.io/PrintShop/index.html": "1ca79596caeba5f1a335474e0d9987c207f77424",
-    "https://Ruchakale19.github.io/PrintShop/main.819ed0da07e56f41.js": "80f49f0a99afd318eee19c3ee1ee71be8c121d9c",
+    "https://Ruchakale19.github.io/PrintShop/index.html": "82f4986601daac94912e612b78e9ed42510c7aa6",
+    "https://Ruchakale19.github.io/PrintShop/main.8c3ce38a4596281a.js": "65383e98ca72686de8c47431648483d50d29151d",
     "https://Ruchakale19.github.io/PrintShop/manifest.webmanifest": "e39395ef6580d0eeefe2dddbcc1ea37513a48df3",
     "https://Ruchakale19.github.io/PrintShop/polyfills.871633f19a55e4bb.js": "a1d8a9aa81eb1e5cbc0e19af093e8ccabe1ac630",
     "https://Ruchakale19.github.io/PrintShop/runtime.ae674de593313bbc.js": "454fe0a2298ff42a05e7bb636faeef7939ca58d0",
